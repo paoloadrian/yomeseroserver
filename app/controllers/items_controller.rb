@@ -44,6 +44,7 @@ class ItemsController < ApplicationController
     @item.item_type = params[:item_type]
     @item.item_time = params[:item_time]
     @item.item_price = params[:item_price]
+    @item.item_image = params[:item_image].gsub "_", "+"
     if @item.item_name!="" and @item.item_description!="" and @item.item_type!="" and @item.item_price!="" and @item.item_time!=""
       @item.save
     end
@@ -98,6 +99,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:item_name, :item_description, :item_type, :item_time, :item_price)
+      params.require(:item).permit(:item_name, :item_description, :item_type, :item_time, :item_price, :item_image)
     end
 end
