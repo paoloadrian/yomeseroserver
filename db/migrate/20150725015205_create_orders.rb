@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration
     create_table :orders do |t|
       t.float :total
       t.references :restaurant, index: true
-      t.references :user, index: true
+      #t.references :user, index: true
 
       t.timestamps null: false
     end
