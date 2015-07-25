@@ -7,6 +7,17 @@ Rails.application.routes.draw do
 
   resources :restaurants
 
+  resources :restaurants
+
+  get '/create_from_json'=> "items#create_from_json"
+  get '/verify_password' => "items#verify_password"
+  #post '/create_from_json'=>"items#create_from_json"
+
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+
+  # You can have the root of your site routed with "root"
+  root 'items#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
