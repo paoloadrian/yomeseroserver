@@ -44,7 +44,6 @@ class ItemsController < ApplicationController
     @item.item_type = params[:item_type]
     @item.item_time = params[:item_time]
     @item.item_price = params[:item_price]
-    @item.item_image = params[:item_image].gsub "_","+"
     if @item.item_name!="" and @item.item_description!="" and @item.item_type!="" and @item.item_price!="" and @item.item_time!=""
       @item.save
     end
@@ -55,7 +54,6 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
-      @item.item_image = params[:item_image].gsub "_", "+"
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
@@ -100,6 +98,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:item_name, :item_description, :item_type, :item_time, :item_price, :item_image)
+      params.require(:item).permit(:item_name, :item_description, :item_type, :item_time, :item_price)
     end
 end

@@ -6,7 +6,6 @@ class CreateItems < ActiveRecord::Migration
       t.string :item_type
       t.integer :item_time
       t.float :item_price
-      t.string :item_image
       t.references :restaurant, index: true
 
       t.timestamps null: false
