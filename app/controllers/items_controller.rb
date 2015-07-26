@@ -44,7 +44,9 @@ class ItemsController < ApplicationController
     @item.item_type = params[:item_type]
     @item.item_time = params[:item_time]
     @item.item_price = params[:item_price]
-    @item.item_image = params[:item_image].gsub "_", "+"
+    if @item.item_image != nil 
+      @item.item_image = params[:item_image].gsub "_", "+"
+    end
     if @item.item_name!="" and @item.item_description!="" and @item.item_type!="" and @item.item_price!="" and @item.item_time!=""
       @item.save
     end
