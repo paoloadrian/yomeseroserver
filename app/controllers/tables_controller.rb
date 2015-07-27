@@ -25,7 +25,7 @@ class TablesController < ApplicationController
   # POST /tables.json
   def create
     @table = Table.new(table_params)
-    @item.restaurant_id = params[:table][:restaurant_id]
+    @table.restaurant_id = params[:table][:restaurant_id]
 
     respond_to do |format|
       if @table.save

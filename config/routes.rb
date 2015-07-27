@@ -12,8 +12,13 @@ Rails.application.routes.draw do
 
   resources :restaurants
 
+  get '/orders/create_from_json'=> "orders#create_from_json"
+  get '/order_items/create_from_json'=> "order_items#create_from_json"
   get '/create_from_json'=> "items#create_from_json"
+  get '/create_user_json'=> "items#create_user_json"
   get '/verify_password' => "items#verify_password"
+  get '/register_user' => "items#register_user"
+
   #post '/create_from_json'=>"items#create_from_json"
 
   # The priority is based upon order of creation: first created -> highest priority.
