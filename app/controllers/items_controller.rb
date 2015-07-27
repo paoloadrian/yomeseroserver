@@ -45,6 +45,7 @@ class ItemsController < ApplicationController
     @item.item_type = params[:item_type]
     @item.item_time = params[:item_time]
     @item.item_price = params[:item_price]
+    @item.restaurant_id = params[:restaurant_id]
     @item.item_image = params[:item_image].gsub("_","+")
     if @item.item_name!="" and @item.item_description!="" and @item.item_type!="" and @item.item_price!="" and @item.item_time!=""
       @item.save
@@ -124,9 +125,14 @@ class ItemsController < ApplicationController
     @user.email = params[:email]
     @user.password = params[:password]
     @user.password_confirmation = params[:password_confirmation]
-    @user.restaurant_id = params[:restaurant_id]
+    @user.rest = params[:rest]
     @user.save
     render json: @user
+  end
+
+  def get_users
+    @users = User.all
+    render json: @users
   end
 
   private

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/verify_password' => "items#verify_password"
   get '/verify_restaurant_password' => "items#verify_restaurant_password"
   get '/register_user' => "items#register_user"
+  get '/get_users' => "items#get_users"
 
   resources :orden_items
 
@@ -18,8 +19,6 @@ Rails.application.routes.draw do
   resources :items
 
   resources :restaurants
-
-  
   #post '/create_from_json'=>"items#create_from_json"
 
   # The priority is based upon order of creation: first created -> highest priority.
