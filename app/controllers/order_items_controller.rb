@@ -64,11 +64,11 @@ class OrderItemsController < ApplicationController
   def create_from_json
     @item = OrderItem.new
     @item.quantity = params[:quantity]
-    @item.order_id = params[:order_id]
-    @item.item_id = params[:item_id]
+    @item.order_id = params[:order]
+    @item.item_id = params[:item]
     if @item.quantity!="" and @item.order_id!="" and @item.item_id!=""
       @item.save
-      render json: @item.id
+      render json: @item
     else
       render json: 0
     end

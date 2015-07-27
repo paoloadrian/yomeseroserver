@@ -64,15 +64,21 @@ class OrdersController < ApplicationController
   def create_from_json
     @order = Order.new
     @order.total = params[:total]
-    @order.restaurant_id = params[:restaurant_id]
-    @order.user_id = params[:user_id]
-    @order.table_id = params[:table_id]
+    @order.status = "Pendiente"
+    @order.restaurant_id = params[:rest]
+    @order.user_id = params[:user]
+    @order.mesa_id = params[:mesa]
     if @order.total!="" and @order.restaurant_id!="" and @order.user_id!="" and @order.table_id!=""
       @order.save
-      render json: @order.id
+      render json: @order
     else
-      render json: 0
+      render json: nil
     end
+  end
+
+  def getOrder
+  	@order = Order.find(params[:id])
+  	render json: @order.order_items
   end
 
   private
