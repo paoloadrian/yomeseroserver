@@ -61,6 +61,20 @@ class OrdersController < ApplicationController
     end
   end
 
+  def create_from_json
+    @order = Order.new
+    @order.total = params[:total]
+    @order.restaurant_id = params[:restaurant_id]
+    @order.user_id = params[:user_id]
+    @order.table_id = params[:table_id]
+    if @order.total!="" and @order.restaurant_id!="" and @order.user_id!="" and @order.table_id!=""
+      @order.save
+      render json: @order.id
+    else
+      render json: 0
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -68,7 +82,7 @@ class OrdersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
+    def params
       params.require(:order).permit(:total, :restaurant_id, :user_id)
     end
 end

@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    @item.restaurant_id = params[:item][:restaurant_id]
 
     respond_to do |format|
       if @item.save
@@ -91,6 +92,25 @@ class ItemsController < ApplicationController
     end
   end
 
+  def register_user
+    @user = User.new
+    @user.email = params[:email]
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
+    @user.save
+    render json: @user
+  end
+
+  def create_user_json
+    @user = User.new
+    @user.email = params[:email]
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
+    @user.restaurant_id = params[:restaurant_id]
+    @user.save
+    render json: @user
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -99,6 +119,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:item_name, :item_description, :item_type, :item_time, :item_price, :item_image)
+      params.require(:item).permit(:item_name, :item_description, :item_type, :item_time, :item_price, :item_image, :restaurant_id)
     end
 end

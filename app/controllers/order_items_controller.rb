@@ -61,6 +61,19 @@ class OrderItemsController < ApplicationController
     end
   end
 
+  def create_from_json
+    @item = OrderItem.new
+    @item.quantity = params[:quantity]
+    @item.order_id = params[:order_id]
+    @item.item_id = params[:item_id]
+    if @item.quantity!="" and @item.order_id!="" and @item.item_id!=""
+      @item.save
+      render json: @item.id
+    else
+      render json: 0
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order_item

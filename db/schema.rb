@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725020403) do
+ActiveRecord::Schema.define(version: 20150727082312) do
 
   create_table "items", force: :cascade do |t|
     t.string   "item_name"
@@ -44,9 +44,12 @@ ActiveRecord::Schema.define(version: 20150725020403) do
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "table_id"
+    t.string   "state"
   end
 
   add_index "orders", ["restaurant_id"], name: "index_orders_on_restaurant_id"
+  add_index "orders", ["table_id"], name: "index_orders_on_table_id"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "restaurants", force: :cascade do |t|
@@ -58,6 +61,16 @@ ActiveRecord::Schema.define(version: 20150725020403) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "tables", force: :cascade do |t|
+    t.integer  "number"
+    t.string   "state"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "tables", ["restaurant_id"], name: "index_tables_on_restaurant_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -72,9 +85,11 @@ ActiveRecord::Schema.define(version: 20150725020403) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "restaurant_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["restaurant_id"], name: "index_users_on_restaurant_id"
 
 end
