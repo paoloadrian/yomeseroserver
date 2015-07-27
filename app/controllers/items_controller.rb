@@ -81,14 +81,32 @@ class ItemsController < ApplicationController
     @pass = params[:password]
     @u = User.where(:email => @user).first
     if @u!=nil
-          if @u.valid_password?(@pass)
+          if @u.valid_password?(@pass) and @u.rest==nil
             render json: @u
           else
             @u = User.new
             render json: @u
           end
     else
-      return false
+      @u = User.new
+      render json: @u
+    end
+  end
+
+  def verify_restaurant_password
+    @user = params[:username]
+    @pass = params[:password]
+    @u = User.where(:email => @user).first
+    if @u!=nil
+          if @u.valid_password?(@pass) and @u.rest!=nil
+            render json: @u
+          else
+            @u = User.new
+            render json: @u
+          end
+    else
+      @u = User.new
+      render json: @u
     end
   end
 

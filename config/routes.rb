@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/create_from_json'=> "items#create_from_json"
   get '/create_user_json'=> "items#create_user_json"
   get '/verify_password' => "items#verify_password"
+  get '/verify_restaurant_password' => "items#verify_restaurant_password"
   get '/register_user' => "items#register_user"
 
   #post '/create_from_json'=>"items#create_from_json"
