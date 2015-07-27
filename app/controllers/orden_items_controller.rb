@@ -66,7 +66,7 @@ class OrdenItemsController < ApplicationController
     @item.cantidad = params[:quantity]
     @item.id_orden = params[:pedido]
     @item.id_item = params[:item]
-    if @item.quantity!="" and @item.pedido_id!="" and @item.item_id!=""
+    if @item.cantidad!="" and @item.id_orden!="" and @item.id_item!=""
       @item.save
       render json: @item
     else
