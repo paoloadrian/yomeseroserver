@@ -1,24 +1,25 @@
 Rails.application.routes.draw do
-  resources :mesas
-
-  devise_for :users
-  
-  resources :order_items
-
-  resources :orders
-
-  resources :items
-
-  resources :restaurants
-
-  get '/orders/create_from_json'=> "orders#create_from_json"
-  get '/order_items/create_from_json'=> "order_items#create_from_json"
+  get '/create_pedido_json'=> "ordens#create_from_json"
+  get '/getOrden'=> "ordens#getOrden"
+  get '/getOrdenItems'=> "ordens#getOrdenItems"
+  get '/create_item_pedido_json'=> "orden_items#create_from_json"
   get '/create_from_json'=> "items#create_from_json"
   get '/create_user_json'=> "items#create_user_json"
   get '/verify_password' => "items#verify_password"
   get '/verify_restaurant_password' => "items#verify_restaurant_password"
   get '/register_user' => "items#register_user"
 
+  resources :orden_items
+
+  resources :ordens
+
+  devise_for :users
+
+  resources :items
+
+  resources :restaurants
+
+  
   #post '/create_from_json'=>"items#create_from_json"
 
   # The priority is based upon order of creation: first created -> highest priority.

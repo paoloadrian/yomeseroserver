@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mesa:</strong>
+  <%= @orden.mesa %>
+</p>
+
+<p>
+  <strong>Consumo:</strong>
+  <%= @orden.consumo %>
+</p>
+
+<p>
+  <strong>Rest:</strong>
+  <%= @orden.rest %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @orden.estado %>
+</p>
+
+<%= link_to 'Edit', edit_orden_path(@orden) %> |
+<%= link_to 'Back', ordens_path %>

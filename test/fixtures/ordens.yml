@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mesa: 1
+  consumo: 1.5
+  rest: 1
+  estado: MyString
+
+two:
+  mesa: 1
+  consumo: 1.5
+  rest: 1
+  estado: MyString

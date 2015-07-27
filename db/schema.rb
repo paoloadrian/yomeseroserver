@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727105947) do
+ActiveRecord::Schema.define(version: 20150727162710) do
 
   create_table "items", force: :cascade do |t|
     t.string   "item_name"
@@ -27,40 +27,42 @@ ActiveRecord::Schema.define(version: 20150727105947) do
 
   add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id"
 
-  create_table "mesas", force: :cascade do |t|
-    t.integer  "number"
-    t.string   "state"
-    t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+  create_table "orden_items", force: :cascade do |t|
+    t.integer  "cantidad"
+    t.integer  "id_item"
+    t.integer  "id_orden"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "mesas", ["restaurant_id"], name: "index_mesas_on_restaurant_id"
+  create_table "ordens", force: :cascade do |t|
+    t.integer  "mesa"
+    t.float    "consumo"
+    t.integer  "rest"
+    t.string   "estado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
-  create_table "order_items", force: :cascade do |t|
+  create_table "pedido_items", force: :cascade do |t|
     t.integer  "quantity"
-    t.integer  "order_id"
+    t.integer  "pedido_id"
     t.integer  "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id"
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
+  add_index "pedido_items", ["item_id"], name: "index_pedido_items_on_item_id"
+  add_index "pedido_items", ["pedido_id"], name: "index_pedido_items_on_pedido_id"
 
-  create_table "orders", force: :cascade do |t|
-    t.float    "total"
+  create_table "pedidos", force: :cascade do |t|
+    t.float    "consumo"
+    t.string   "estado"
     t.integer  "restaurant_id"
-    t.integer  "user_id"
+    t.integer  "mesa"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "mesa_id"
-    t.string   "state"
   end
-
-  add_index "orders", ["mesa_id"], name: "index_orders_on_mesa_id"
-  add_index "orders", ["restaurant_id"], name: "index_orders_on_restaurant_id"
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "restaurant_name"
@@ -83,14 +85,12 @@ ActiveRecord::Schema.define(version: 20150727105947) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "rest"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "restaurant_id"
-    t.integer  "rest"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["restaurant_id"], name: "index_users_on_restaurant_id"
 
 end
