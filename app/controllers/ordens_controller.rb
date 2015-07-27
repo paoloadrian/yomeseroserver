@@ -63,7 +63,7 @@ class OrdensController < ApplicationController
 
   def create_from_json
     @orden = Orden.new
-    @orden.consumo = params[:total].gsub("_",".")
+    @orden.consumo = params[:consumo].to_f
     @orden.estado = "Pendiente"
     @orden.rest = params[:rest]
     @orden.mesa = params[:mesa]
