@@ -67,7 +67,7 @@ class OrdensController < ApplicationController
     @orden.estado = "Pendiente"
     @orden.rest = params[:rest]
     @orden.mesa = params[:mesa]
-    if @orden.consumo!="" and @orden.restaurant_id!="" and @orden.estado!="" and @orden.mesa!=""
+    if @orden.consumo!="" and @orden.rest!="" and @orden.estado!="" and @orden.mesa!=""
       @orden.save
     end
   end
