@@ -124,9 +124,14 @@ class ItemsController < ApplicationController
     @user.email = params[:email]
     @user.password = params[:password]
     @user.password_confirmation = params[:password_confirmation]
-    @user.restaurant_id = params[:restaurant_id]
+    @user.rest = params[:rest]
     @user.save
     render json: @user
+  end
+
+  def get_users
+    @users = User.all
+    render json: @users
   end
 
   private
