@@ -62,7 +62,7 @@ class OrdenItemsController < ApplicationController
   end
 
   def create_from_json
-    @item = PedidoItem.new
+    @item = OrdenItem.new
     @item.cantidad = params[:quantity]
     @item.id_orden = params[:pedido]
     @item.id_item = params[:item]
