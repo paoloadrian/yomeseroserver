@@ -75,6 +75,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def getOrder
+  	@order = Order.find(params[:id])
+  	render json: @order.order_items
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
