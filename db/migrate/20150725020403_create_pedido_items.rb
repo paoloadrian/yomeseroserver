@@ -7,7 +7,7 @@ class CreatePedidoItems < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :pedido_items, :orders
+    add_foreign_key :pedido_items, :pedidos
     add_foreign_key :pedido_items, :items
   end
 end
