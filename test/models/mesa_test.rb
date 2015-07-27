@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TableTest < ActiveSupport::TestCase
+class MesaTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

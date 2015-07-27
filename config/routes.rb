@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-  resources :tables
+  resources :mesas
 
   devise_for :users
+  
   resources :order_items
 
   resources :orders
 
   resources :items
-
-  resources :restaurants
 
   resources :restaurants
 
