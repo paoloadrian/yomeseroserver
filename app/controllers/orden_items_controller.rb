@@ -74,17 +74,17 @@ class OrdenItemsController < ApplicationController
   end
 
   def create_from_json
-    @item = OrdenItem.new
-    @item.cantidad = params[:quantity]
-    @item.id_orden = params[:pedido]
-    @item.id_item = params[:item]
-    if @item.cantidad!="" and @item.id_orden!="" and @item.id_item!=""
-      @item.item_id = params[:item]
-      @item.orden_id = params[:pedido]
+    @orden_item = OrdenItem.new
+    @orden_item.cantidad = params[:quantity].to_i
+    @orden_item.id_orden = params[:pedido].to_i
+    @orden_item.id_item = params[:item].to_i
+    if @orden_item.cantidad!="" and @orden_item.id_orden!="" and @orden_item.id_item!=""
+      @orden_item.item_id = params[:item]
+      @orden_item.orden_id = params[:pedido]
       @orden_item.item_name = @orden_item.item.item_name
       @orden_item.item_image = @orden_item.item.item_image
       @orden_item.item_type = @orden_item.item.item_type
-      @item.save
+      @orden_item.save
       render json: @item
     else
       render json: 0
