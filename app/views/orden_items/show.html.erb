@@ -16,8 +16,14 @@
 </p>
 
 <p>
-  <strong>Id item:</strong>
+  <strong>Item name:</strong>
   <%= @orden_item.item_name %>
+</p>
+
+<p>
+  <strong>Item image:</strong>
+  <% orden_item.item_image.gsub('_','+') %>
+  <img src="data:image/png;base64,<%=orden_item.item_image%>" width="50" />
 </p>
 
 <%= link_to 'Edit', edit_orden_item_path(@orden_item) %> |
