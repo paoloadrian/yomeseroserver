@@ -7,6 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= link_to 'Items', items_path %>
+<%= link_to 'Restaurants', restaurants_path %>
+<%= link_to 'Orders', ordens_path %>
+<%= link_to 'Order Items', orden_items_path %>
+<br>
+<% if current_user %>
+  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+<% else %>
+  <%= link_to "Sign in", "/users/sign_in" %>
+<% end %>
+<br>
 
 <%= yield %>
 

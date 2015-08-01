@@ -1,10 +1,5 @@
 <p id="notice"><%= notice %></p>
 <br>
-<% if current_user %>
-  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<% else %>
-  <%= link_to "Sign in", "/users/sign_in" %>
-<% end %>
 <h1>Listing Items</h1>
 
 <table>
