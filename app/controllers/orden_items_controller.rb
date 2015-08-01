@@ -10,6 +10,7 @@ class OrdenItemsController < ApplicationController
   # GET /orden_items/1
   # GET /orden_items/1.json
   def show
+  	@item = @orden_item.item
   end
 
   # GET /orden_items/new
@@ -25,6 +26,9 @@ class OrdenItemsController < ApplicationController
   # POST /orden_items.json
   def create
     @orden_item = OrdenItem.new(orden_item_params)
+    @orden_item.orden_id = @orden_item.id_orden
+    @orden_item.item_id = @orden_item.id_item
+    @orden_item.item_name = @orden_item.item.item_name
 
     respond_to do |format|
       if @orden_item.save
@@ -42,6 +46,10 @@ class OrdenItemsController < ApplicationController
   def update
     respond_to do |format|
       if @orden_item.update(orden_item_params)
+      	@orden_item.orden_id = @orden_item.id_orden
+    	@orden_item.item_id = @orden_item.id_item
+    	@orden_item.item_name = @orden_item.item.item_name
+    	@orden_item.save
         format.html { redirect_to @orden_item, notice: 'Orden item was successfully updated.' }
         format.json { render :show, status: :ok, location: @orden_item }
       else
@@ -67,6 +75,8 @@ class OrdenItemsController < ApplicationController
     @item.id_orden = params[:pedido]
     @item.id_item = params[:item]
     if @item.cantidad!="" and @item.id_orden!="" and @item.id_item!=""
+      @item.item_id = params[:item]
+      @item.orden_id = params[:pedido]
       @item.save
       render json: @item
     else

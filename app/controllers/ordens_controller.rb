@@ -73,14 +73,15 @@ class OrdensController < ApplicationController
     end
   end
 
-  def getOrden
+  #get all the orders of a restaurant
+  def getOrden 
   	@orden = Orden.where(:rest => params[:id_res])
   	render json: @orden
   end
 
   def getOrdenItems
-  	@orden_items = OrdenItem.where(:id_orden => params[:id])
-  	render json: @orden_items
+  	@orden = Orden.find(params[:id])
+  	render json: @orden.orden_items
   end
 
   private

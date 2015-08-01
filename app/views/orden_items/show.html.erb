@@ -6,13 +6,18 @@
 </p>
 
 <p>
-  <strong>Id item:</strong>
-  <%= @orden_item.id_item %>
+  <strong>Id orden:</strong>
+  <%= @orden_item.orden.id %>
 </p>
 
 <p>
-  <strong>Id orden:</strong>
-  <%= @orden_item.id_orden %>
+  <strong>Id item:</strong>
+  <%= @orden_item.item.id %>
+</p>
+
+<p>
+  <strong>Id item:</strong>
+  <%= @orden_item.item_name %>
 </p>
 
 <%= link_to 'Edit', edit_orden_item_path(@orden_item) %> |
