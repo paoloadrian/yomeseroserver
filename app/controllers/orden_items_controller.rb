@@ -30,6 +30,7 @@ class OrdenItemsController < ApplicationController
     @orden_item.item_id = @orden_item.id_item
     @orden_item.item_name = @orden_item.item.item_name
     @orden_item.item_image = @orden_item.item.item_image
+    @orden_item.item_type = @orden_item.item.item_type
 
     respond_to do |format|
       if @orden_item.save
@@ -51,6 +52,7 @@ class OrdenItemsController < ApplicationController
     	@orden_item.item_id = @orden_item.id_item
     	@orden_item.item_name = @orden_item.item.item_name
     	@orden_item.item_image = @orden_item.item.item_image
+    	@orden_item.item_type = @orden_item.item.item_type
     	@orden_item.save
         format.html { redirect_to @orden_item, notice: 'Orden item was successfully updated.' }
         format.json { render :show, status: :ok, location: @orden_item }
@@ -81,6 +83,7 @@ class OrdenItemsController < ApplicationController
       @item.orden_id = params[:pedido]
       @orden_item.item_name = @orden_item.item.item_name
       @orden_item.item_image = @orden_item.item.item_image
+      @orden_item.item_type = @orden_item.item.item_type
       @item.save
       render json: @item
     else

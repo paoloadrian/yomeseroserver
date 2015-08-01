@@ -1,4 +1,4 @@
 class Item < ActiveRecord::Base
   belongs_to :restaurant
-  has_many :ordn_items
+  has_many :orden_items
 end

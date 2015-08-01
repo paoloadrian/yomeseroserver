@@ -58,6 +58,12 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
+      	@item.orden_items.each do |orden_item|
+      		orden_item.item_name = @item.item_name
+      		orden_item.item_image = @item.item_image
+      		orden_item.item_type = @item.item_type
+      		orden_item.save
+      	end
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else

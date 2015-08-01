@@ -21,6 +21,11 @@
 </p>
 
 <p>
+  <strong>Item type:</strong>
+  <%= @orden_item.item_type %>
+</p>
+
+<p>
   <strong>Item image:</strong>
   <% @orden_item.item_image.gsub('_','+') %>
   <img src="data:image/png;base64,<%=@orden_item.item_image%>" width="50" />

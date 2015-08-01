@@ -8,6 +8,7 @@
       <th>Cantidad</th>
       <th>Id item</th>
       <th>Item name</th>
+      <th>Item type</th>
       <th>Item image</th>
       <th>Id orden</th>
       <th colspan="3"></th>
@@ -20,6 +21,7 @@
         <td><%= orden_item.cantidad %></td>
         <td><%= orden_item.id_item %></td>
         <td><%= orden_item.item_name %></td>
+        <td><%= orden_item.item_type %></td>
         <% orden_item.item_image.gsub('_','+') %>
         <td><img src="data:image/png;base64,<%=orden_item.item_image%>" width="50" /></td>
         <td><%= orden_item.id_orden %></td>
