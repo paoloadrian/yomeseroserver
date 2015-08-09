@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/get_users' => "items#get_users"
   get '/get_user' => "items#get_user"
   get '/facturation_data' => "items#facturation_data"
+  get '/update_from_json' => "ordens#update_from_json"
 
   resources :mesas
 
