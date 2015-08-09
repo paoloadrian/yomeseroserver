@@ -141,6 +141,19 @@ class ItemsController < ApplicationController
     render json: @users
   end
 
+  def get_user
+    @user = User.(params[:id])
+    render json: @user
+  end
+
+  def facturation_data
+    @user = User.(params[:id])
+    @user.nit = params[:nit]
+    @user.name = params[:name]
+    @user.save
+    render json: @user
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get '/create_pedido_json'=> "ordens#create_from_json"
   get '/getOrden'=> "ordens#getOrden"
   get '/getOrdenItems'=> "ordens#getOrdenItems"
@@ -9,6 +10,10 @@ Rails.application.routes.draw do
   get '/verify_restaurant_password' => "items#verify_restaurant_password"
   get '/register_user' => "items#register_user"
   get '/get_users' => "items#get_users"
+  get '/get_user' => "items#get_user"
+  get '/facturation_data' => "items#facturation_data"
+
+  resources :mesas
 
   resources :orden_items
 
