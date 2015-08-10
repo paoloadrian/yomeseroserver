@@ -93,6 +93,18 @@ class OrdensController < ApplicationController
   	render json: @orden.orden_items
   end
 
+  def billing_data
+    @user = User.find(params[:user_id])
+    @user.nit = params[:nit]
+    @user.name = params[:name]
+    @user.save
+    @orden = Orden.find(params[:id])
+    @orden.nit = params[:nit]
+    @orden.name = params[:name]
+    @orden.save
+    render json: @orden
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_orden

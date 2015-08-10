@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/register_user' => "items#register_user"
   get '/get_users' => "items#get_users"
   get '/get_user' => "items#get_user"
-  get '/facturation_data' => "items#facturation_data"
+  get '/billing_data' => "ordens#billing_data"
   get '/update_from_json' => "ordens#update_from_json"
 
   resources :mesas
