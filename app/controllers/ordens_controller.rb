@@ -25,6 +25,8 @@ class OrdensController < ApplicationController
   # POST /ordens.json
   def create
     @orden = Orden.new(orden_params)
+    @orden.name = "Sin nombre"
+    @orden.nit = 0
 
     respond_to do |format|
       if @orden.save
@@ -65,6 +67,8 @@ class OrdensController < ApplicationController
     @orden = Orden.new
     @orden.consumo = params[:consumo].to_f
     @orden.estado = "Pendiente"
+    @orden.name = "Sin nombre"
+    @orden.nit = 0
     @orden.rest = params[:rest]
     @orden.mesa = params[:mesa]
     if @orden.consumo!="" and @orden.rest!="" and @orden.estado!="" and @orden.mesa!=""
@@ -94,13 +98,21 @@ class OrdensController < ApplicationController
   end
 
   def billing_data
-    @user = User.find(params[:user_id])
-    @user.nit = params[:nit]
-    @user.name = params[:name]
-    @user.save
     @orden = Orden.find(params[:id])
-    @orden.nit = params[:nit]
     @orden.name = params[:name]
+    if @orden.name != ""
+    	@orden.nit = params[:nit]
+    else
+    	@orden.nit = 0
+    	@orden.name = "Sin nombre"
+    end
+    @orden.save
+    render json: @orden
+  end
+
+  def pedir_cuenta
+    @orden = Orden.find(params[:id])
+    @orden.estado = "Por cobrar"
     @orden.save
     render json: @orden
   end

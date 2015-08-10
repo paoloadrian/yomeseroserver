@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/get_user' => "items#get_user"
   get '/billing_data' => "ordens#billing_data"
   get '/update_from_json' => "ordens#update_from_json"
+  get '/pedir_cuenta' => "ordens#pedir_cuenta"
 
   resources :mesas
 
