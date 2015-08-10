@@ -73,6 +73,15 @@ class OrdensController < ApplicationController
     end
   end
 
+  def update_from_json
+    id = params[:id]
+    state = params[:state]
+    @orden = Orden.find(id)
+    @orden.estado = state
+    @orden.save
+    render json: @orden
+  end
+
   #get all the orders of a restaurant
   def getOrden 
   	@orden = Orden.where(:rest => params[:id_res])
