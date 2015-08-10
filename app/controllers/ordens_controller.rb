@@ -71,6 +71,8 @@ class OrdensController < ApplicationController
     @orden.nit = 0
     @orden.rest = params[:rest]
     @orden.mesa = params[:mesa]
+    @orden.nit = 0
+    @orden.name = "Sin nombre"
     if @orden.consumo!="" and @orden.rest!="" and @orden.estado!="" and @orden.mesa!=""
       @orden.save
       render json: @orden
