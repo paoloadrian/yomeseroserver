@@ -147,7 +147,7 @@ class ItemsController < ApplicationController
   end
 
   def facturation_data
-    @user = User.(params[:id])
+    @user = User.find(params[:id])
     @user.nit = params[:nit]
     @user.name = params[:name]
     @user.save
