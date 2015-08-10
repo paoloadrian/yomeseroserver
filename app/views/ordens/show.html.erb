@@ -20,5 +20,15 @@
   <%= @orden.estado %>
 </p>
 
+<p>
+  <strong>Nombre Factura:</strong>
+  <%= @orden.name %>
+</p>
+
+<p>
+  <strong>NIT:</strong>
+  <%= @orden.nit %>
+</p>
+
 <%= link_to 'Edit', edit_orden_path(@orden) %> |
 <%= link_to 'Back', ordens_path %>
